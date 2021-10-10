@@ -1,16 +1,22 @@
 
 function selectionSort(arr) {
   let i, j;
-  const ERR_MSG_NaN = () => {
+  const errMsgNaN = () => {
     console.log(`--~~**!!>ERROR<!!**~~-- index ${i} of [${arr}] is NaN! --~~**!!>ERROR<!!**~~--`);
     console.log(`--~~**!!>ERROR<!!**~~-- [${arr}] <-- ${arr[i]} --~~**!!>ERROR<!!**~~--`);
   }
-  const ERR_MSG_EMPTY = `--~~**!!>ERROR<!!**~~-- The array is empty! --~~**!!>ERROR<!!**~~--`;
+  const errMsgEmpty = `--~~**!!>ERROR<!!**~~-- The array is empty! --~~**!!>ERROR<!!**~~--`;
   // debugger;
-  if (arr.length < 1) return ERR_MSG_EMPTY;
+  if (arr.length < 1) {
+    console.log(errMsgEmpty);
+    return [];
+  }
   for (i = 0; i < arr.length; i++) {
     for (j = (i+1); j < arr.length; j++ ) {
-      if (isNaN(+arr[i]) || arr[i] === '') return ERR_MSG_NaN();
+      if (isNaN(+arr[i]) || arr[i] === '') {
+        console.log(errMsgNaN());
+        return NaN;
+      }
       if (+arr[j] === -Infinity) {
         [arr[i], arr[j]] = [+arr[j], +arr[i]];
         break;
